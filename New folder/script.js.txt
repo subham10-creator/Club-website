@@ -1,0 +1,30 @@
+// Join button click
+document.getElementById("joinBtn").addEventListener("click", function() {
+  alert("Thanks for your interest! We'll be in touch soon.");
+});
+
+// Fake member counter (just for demo/interactivity)
+let memberCount = 0;
+const targetCount = 128;
+const counterEl = document.getElementById("memberCount");
+
+function animateCounter() {
+  const interval = setInterval(() => {
+    memberCount += 4;
+    if (memberCount >= targetCount) {
+      memberCount = targetCount;
+      clearInterval(interval);
+    }
+    counterEl.textContent = `We currently have ${memberCount} members and growing!`;
+  }, 30);
+}
+animateCounter();
+
+// Contact form handling (no backend — just a demo confirmation)
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  document.getElementById("formStatus").textContent =
+    `Thanks, ${name}! Your message has been noted (demo only — no server connected).`;
+  this.reset();
+});
